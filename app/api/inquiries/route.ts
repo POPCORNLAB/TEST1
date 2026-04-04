@@ -1,30 +1,17 @@
 import { NextResponse } from 'next/server';
-import { promises as fs } from 'fs';
-import path from 'path';
 
-const dataFilePath = path.join(process.cwd(), 'data', 'inquiries.json');
+// Vercel 서버리스 환경에서는 파일 시스템 쓰기가 불가하므로
+// 메모리 기반 임시 저장소를 사용합니다.
+// 실제 프로덕션에서는 Supabase 등의 외부 DB로 교체하세요.
+let inquiries: Record<string, unknown>[] = [];
 
 export async function GET() {
-  try {
-    const data = await fs.readFile(dataFilePath, 'utf8');
-    const inquiries = JSON.parse(data);
-    return NextResponse.json(inquiries);
-  } catch (error) {
-    return NextResponse.json([]);
-  }
+  return NextResponse.json(inquiries);
 }
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    
-    let inquiries = [];
-    try {
-      const data = await fs.readFile(dataFilePath, 'utf8');
-      inquiries = JSON.parse(data);
-    } catch (e) {
-      // File doesn't exist yet, it's fine
-    }
 
     const newInquiry = {
       id: Date.now(),
@@ -38,11 +25,7 @@ export async function POST(request: Request) {
       status: "대기중"
     };
 
-    // Ensure data directory exists
-    await fs.mkdir(path.join(process.cwd(), 'data'), { recursive: true });
-    
-    inquiries.unshift(newInquiry); // Insert at the beginning so newest appears first
-    await fs.writeFile(dataFilePath, JSON.stringify(inquiries, null, 2));
+    inquiries.unshift(newInquiry);
 
     return NextResponse.json({ success: true, inquiry: newInquiry });
   } catch (error) {
