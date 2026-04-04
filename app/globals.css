@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand: #3b82f6; /* Sleek Blue */
+  --color-brand-hover: #2563eb;
+  --color-navy: #000000; /* Apple Black */
+  --color-charcoal: #111111; /* Dark Gray */
+  --font-pretendard: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+}
+
+:root {
+  /* Force Sleek Dark Mode Globally */
+  --background: #000000;
+  --foreground: #F5F5F7; /* Apple's off-white text */
+}
+
+body {
+  font-family: var(--font-pretendard);
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #000000; 
+}
+::-webkit-scrollbar-thumb {
+  background: #333333; 
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555555; 
+}
