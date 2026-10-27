@@ -23,7 +23,7 @@ export default function Navbar() {
             <Link 
               key={link.href} 
               href={link.href}
-              className={`text-xs md:text-sm font-medium tracking-wide transition-colors ${pathname === link.href ? "text-white" : "text-gray-400 hover:text-white"}`}
+              className={`text-xs md:text-base font-medium tracking-wide transition-colors ${pathname === link.href ? "text-white" : "text-gray-400 hover:text-white"}`}
             >
               {link.label}
             </Link>
