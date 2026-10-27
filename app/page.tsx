@@ -70,17 +70,17 @@ export default function Home() {
           {
             title: "데이터는 날카롭게.",
             subtitle: "PPT & IR Pitch Deck",
-            desc: "복잡한 텍스트와 숫자를 직관적인 시각 언어로 번역합니다. 투자자의 마음을 움직이는 완벽한 피칭덱을 경험하세요."
+            desc: ["복잡한 텍스트와 숫자를 직관적인 시각 언어로 번역합니다.", "투자자의 마음을 움직이는 완벽한 피칭덱을 경험하세요."]
           },
           {
             title: "시선은 압도적으로.",
             subtitle: "Event Poster & Banner",
-            desc: "0.1초 만에 시선을 사로잡아야 하는 광고 소재. 군더더기 없는 레이아웃과 강력한 메시지로 트래픽을 극대화합니다."
+            desc: ["0.1초 만에 시선을 사로잡아야 하는 광고 소재.", "군더더기 없는 레이아웃과 강력한 메시지로 트래픽을 극대화합니다."]
           },
           {
             title: "설득은 자연스럽게.",
             subtitle: "Detail Page",
-            desc: "고객이 스크롤을 멈추지 않게 만듭니다. 구매 전환율을 높이는 치밀한 기획과 세련된 톤앤매너를 제공합니다."
+            desc: ["고객이 스크롤을 멈추지 않게 만듭니다.", "구매 전환율을 높이는 치밀한 기획과 세련된 톤앤매너를 제공합니다."]
           }
         ].map((item, index) => (
           <motion.div 
@@ -93,8 +93,10 @@ export default function Home() {
           >
             <h3 className="text-brand font-extrabold tracking-[0.15em] uppercase text-sm">{item.subtitle}</h3>
             <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-[#F5F5F7]">{item.title}</h2>
-            <p className="max-w-2xl text-xl md:text-2xl text-gray-400 font-medium leading-relaxed tracking-tight">
-              {item.desc}
+            <p className="max-w-3xl text-xl md:text-2xl text-gray-400 font-medium leading-relaxed tracking-tight break-keep">
+              {item.desc.map((line) => (
+                <span key={line} className="block">{line}</span>
+              ))}
             </p>
           </motion.div>
         ))}
