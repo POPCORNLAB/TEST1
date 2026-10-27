@@ -143,8 +143,9 @@ export default function Home() {
             <h2 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-10 text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-500">
               당신의 비즈니스가<br className="md:hidden" /> 돋보일 차례입니다.
             </h2>
-            <Link href="/contact" className="inline-block bg-white text-black font-bold text-lg md:text-xl px-12 py-5 rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+            <Link href="/contact" className="inline-flex items-center gap-3 border border-white/40 text-white font-semibold text-lg md:text-xl px-12 py-5 rounded transition-colors duration-300 hover:border-gray-400 hover:text-gray-400 active:bg-white active:border-white active:text-black group">
               지금 바로 의뢰하기
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
             </Link>
           </motion.div>
       </section>
