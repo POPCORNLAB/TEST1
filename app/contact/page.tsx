@@ -100,14 +100,14 @@ export default function Contact() {
                 
                 <div>
                   <label className="block text-xs font-bold tracking-[0.2em] uppercase text-gray-600 mb-4">회사명 (선택사항)</label>
-                  <input name="company" type="text" className="w-full px-0 py-4 bg-transparent border-b border-gray-800 text-3xl font-medium text-white focus:outline-none focus:border-white transition-colors placeholder:text-gray-800/50" placeholder="Ssoya Corp." />
+                  <input name="company" type="text" className="w-full px-0 py-4 bg-transparent border-b border-gray-800 text-3xl font-medium text-white focus:outline-none focus:border-white transition-colors placeholder:text-gray-800/50" placeholder="OOO" />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-10">
                 <div>
                   <label className="block text-xs font-bold tracking-[0.2em] uppercase text-blue-400 mb-4">회신받을 이메일 (필수)</label>
-                  <input required name="email" type="email" className="w-full px-0 py-4 bg-transparent border-b border-gray-800 text-3xl font-medium text-white focus:outline-none focus:border-white transition-colors placeholder:text-gray-800/50" placeholder="hello@ssoya.com" />
+                  <input required name="email" type="email" className="w-full px-0 py-4 bg-transparent border-b border-gray-800 text-3xl font-medium text-white focus:outline-none focus:border-white transition-colors placeholder:text-gray-800/50" placeholder="abc@gmail.com" />
                 </div>
                 
                 <div>
