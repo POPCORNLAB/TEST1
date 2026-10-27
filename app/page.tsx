@@ -1,7 +1,51 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, MotionConfig, type TargetAndTransition, type Transition } from "framer-motion";
 import Link from "next/link";
+
+// 키워드 성격에 맞춘 글자별 등장 효과
+const keywordEffects: Record<string, { from: TargetAndTransition; transition: Transition; stagger: number }> = {
+  // 날카롭게: 비스듬히 빠르게 베어 들어오기
+  sharp: {
+    from: { opacity: 0, x: -40, skewX: -20 },
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+    stagger: 0.06,
+  },
+  // 압도적으로: 크게 다가왔다가 제자리에 쿵 하고 안착
+  bold: {
+    from: { opacity: 0, scale: 2.2, filter: "blur(8px)" },
+    transition: { type: "spring", stiffness: 260, damping: 14 },
+    stagger: 0.08,
+  },
+  // 자연스럽게: 아래에서 통통 튀어 오르기
+  soft: {
+    from: { opacity: 0, y: 40 },
+    transition: { type: "spring", stiffness: 300, damping: 10 },
+    stagger: 0.08,
+  },
+};
+
+function AnimatedKeyword({ text, effect }: { text: string; effect: keyof typeof keywordEffects }) {
+  const { from, transition, stagger } = keywordEffects[effect];
+  return (
+    <MotionConfig reducedMotion="user">
+      <span className="inline-block whitespace-nowrap">
+        {[...text].map((char, i) => (
+          <motion.span
+            key={i}
+            className="inline-block text-transparent bg-clip-text bg-gradient-to-b from-white to-[#7DD3FC]"
+            initial={from}
+            whileInView={{ opacity: 1, x: 0, y: 0, scale: 1, skewX: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-20%" }}
+            transition={{ ...transition, delay: 0.5 + i * stagger }}
+          >
+            {char}
+          </motion.span>
+        ))}
+      </span>
+    </MotionConfig>
+  );
+}
 
 export default function Home() {
   return (
@@ -68,17 +112,23 @@ export default function Home() {
       <section className="w-full max-w-5xl mx-auto px-6 py-40 flex flex-col space-y-48">
         {[
           {
-            title: "데이터는 날카롭게.",
+            title: "데이터는",
+            keyword: "날카롭게",
+            effect: "sharp",
             subtitle: "PPT & IR Pitch Deck",
             desc: ["복잡한 텍스트와 숫자를 직관적인 시각 언어로 번역합니다.", "투자자의 마음을 움직이는 완벽한 피칭덱을 경험하세요."]
           },
           {
-            title: "시선은 압도적으로.",
+            title: "시선은",
+            keyword: "압도적으로",
+            effect: "bold",
             subtitle: "Event Poster & Banner",
             desc: ["0.1초 만에 시선을 사로잡아야 하는 광고 소재.", "군더더기 없는 레이아웃과 강력한 메시지로 트래픽을 극대화합니다."]
           },
           {
-            title: "설득은 자연스럽게.",
+            title: "설득은",
+            keyword: "자연스럽게",
+            effect: "soft",
             subtitle: "Detail Page",
             desc: ["고객이 스크롤을 멈추지 않게 만듭니다.", "구매 전환율을 높이는 치밀한 기획과 세련된 톤앤매너를 제공합니다."]
           }
@@ -92,7 +142,9 @@ export default function Home() {
             className="flex flex-col items-center text-center space-y-6"
           >
             <h3 className="text-brand font-extrabold tracking-[0.15em] uppercase text-sm">{item.subtitle}</h3>
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-[#F5F5F7]">{item.title}</h2>
+            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-[#F5F5F7]">
+              {item.title} <AnimatedKeyword text={item.keyword} effect={item.effect} />.
+            </h2>
             <p className="max-w-3xl text-xl md:text-2xl text-gray-400 font-medium leading-relaxed tracking-tight break-keep">
               {item.desc.map((line) => (
                 <span key={line} className="block">{line}</span>
