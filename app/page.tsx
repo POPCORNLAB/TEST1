@@ -140,7 +140,7 @@ export default function Home() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="text-center"
           >
-            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-10 text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-500">
+            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-10 text-transparent bg-clip-text bg-gradient-to-b from-white to-[#7DD3FC]">
               당신의 비즈니스가<br className="md:hidden" /> 돋보일 차례입니다.
             </h2>
             <Link href="/contact" className="inline-flex items-center gap-3 text-white font-semibold text-lg md:text-xl px-12 py-5 rounded transition-colors duration-300 hover:text-gray-400 active:bg-white active:text-black group">
