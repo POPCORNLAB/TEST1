@@ -30,9 +30,9 @@ export default function About() {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-5xl mx-auto text-center mb-48 px-4"
         >
-          <h2 className="text-3xl md:text-6xl font-black tracking-tighter leading-tight text-white mb-10">
-            "단순히 예쁜 디자인이 아닙니다. <br className="hidden md:block"/>
-            비즈니스 목표를 향한 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">가장 빠른 직행선</span>입니다."
+          <h2 className="text-2xl md:text-[2rem] lg:text-5xl font-black tracking-tighter leading-tight text-white mb-10 break-keep">
+            <span className="block">"단순히 예쁜 디자인이 아닙니다.</span>
+            <span className="block">비즈니스 목표를 향한 <span className="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">가장 빠른 직행선</span>입니다."</span>
           </h2>
         </motion.section>
 
