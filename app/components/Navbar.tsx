@@ -15,8 +15,8 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 w-full backdrop-blur-xl bg-black/60 border-b border-white/10 transition-all duration-300">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        <Link href="/" className="font-semibold text-xl tracking-tighter text-[#F5F5F7] hover:text-white transition-colors">
-          POPCORN LAB<span className="text-brand">.</span>
+        <Link href="/" className="font-semibold italic text-xl tracking-tighter text-brand hover:text-brand-hover transition-colors">
+          POPCORN LAB.
         </Link>
         <nav className="flex items-center gap-8">
           {links.map((link) => (
